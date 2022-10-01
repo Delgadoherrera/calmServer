@@ -1,0 +1,75 @@
+DROP SCHEMA IF EXISTS `calm`;
+CREATE SCHEMA `calm` DEFAULT CHARACTER SET utf8mb4 ;
+USE `calm`;
+CREATE TABLE `users`(
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nombre` VARCHAR(255) NOT NULL,
+    `apellido` VARCHAR(255) NOT NULL,
+    `telefono` INT NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `tipoUsuario` INT NOT NULL
+);
+
+CREATE TABLE `pacientes`(
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nombre` VARCHAR(255) NOT NULL,
+    `apellido` VARCHAR(255) NOT NULL,
+    `nombreFamiliar` VARCHAR(255) NOT NULL,
+    `apellidoFamiliar` VARCHAR(255) NOT NULL,
+    `telefono` INT NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `patologia` VARCHAR(255) NOT NULL,
+    `asistente` VARCHAR(255) NOT NULL,
+    `valores` VARCHAR(255) NOT NULL,
+    `fechaInicio` DATE NOT NULL,
+    `fechaFinal` DATE NOT NULL,
+    `notasVarias` VARCHAR(255) NOT NULL,
+    `direccion` VARCHAR(255) NOT NULL,
+    `precio` INT NOT NULL,
+    `status` VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE `personal`(
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nombre` VARCHAR(255) NOT NULL,
+    `apellido` VARCHAR(255) NOT NULL,
+    `direccion` VARCHAR(255) NOT NULL,
+     `telefono` INT NOT NULL,
+    `dni` INT NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `vacunaciones` VARCHAR(255) NOT NULL,
+    `monotributo` VARCHAR(255) NOT NULL,
+    `fechaInicio` DATE NOT NULL,
+    `fechaFinal` DATE NOT NULL,
+    `notasVarias` VARCHAR(255) NOT NULL,
+    `valor` INT NOT NULL,
+    `status`VARCHAR(255)  NOT NULL
+);
+CREATE TABLE `curriculums`(
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nombre` VARCHAR(255) NOT NULL,
+    `apellido` VARCHAR(255) NOT NULL,
+    `telefono` INT NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `fechaNacimiento` DATE NOT NULL,
+    `localidad` VARCHAR(255) NOT NULL,
+    `aplicaPersonal` VARCHAR(255) NOT NULL,
+    `experiencia` VARCHAR(255) NOT NULL,
+    `cv` VARCHAR(255) NOT NULL,
+    `notasVarias` VARCHAR(255) NOT NULL
+);
+
+INSERT INTO pacientes (nombre, apellido,direccion, nombreFamiliar,apellidoFamiliar,telefono,email,patologia,asistente,valores,fechaInicio, fechaFinal,notasVarias,precio,status) VALUES 
+
+('nombre deconocido','apellido desconocido','Montevideo 879' ,'Sra. Monica','apellido familiar desconocido',1158022002,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Ortopedia Alemana',72900,1 ),
+('Clorinda','apellido desconocido','Fray Calletano Rodriguez 1485 PB' ,'Sra. Iris','apellido familiar desconocido',1168733288,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Villa Adelina',79800,1 ),
+('Teresa De Marco','apellido desconocido','Chascomus 4684' ,'Sr. Natalio','Rubino',1162735162,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Mataderos',103800,1 ),
+('nombre desconocido','apellido desconocido','Av. Corrientes 4894 9A' ,'Sra Marta','Bocian',1131821315,'email','patologia','asistente','valores','fechaInicio','fechaFinal','notasVariasDesconocidas',60000,1 )
+
+INSERT INTO personal (nombre, apellido,direccion, dni,vacunaciones,telefono,monotributo,notasVarias,valor,status) VALUES 
+('Enfermera','Deprueba','Av. Corrientes 1212 4A' ,34490664,'COVID: 5 agosto 2022' ,1170189952,'LINK a monotributo','notas Varias',55000, 'pagado')
+
+
+
+
