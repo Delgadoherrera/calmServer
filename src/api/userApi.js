@@ -78,7 +78,7 @@ router.post("/usuario/register", async (req, res) => {
         telefono: req.body.telefono,
         email: req.body.email,
         password: bcryptjs.hashSync(req.body.password, 10),
-        tipoUsuario: 1
+        tipoUsuario: 2
 
     });
 

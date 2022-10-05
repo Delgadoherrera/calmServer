@@ -3,6 +3,7 @@ const router = express.Router();
 const path = require('path')
 const db = require("../database/models")
 const Paciente = db.Paciente;
+const Facturacion = db.Facturacion;
 
 
 
@@ -18,6 +19,24 @@ router.get("/pacientesList", async (req, res) => {
         })
 })
 
+router.get("/detallepaciente/:id", async (req, res) => {
+    console.log(req.params.id)
+
+    id = req.params.id
+    let emailVerify = req.body.email
+    let password = req.body.password
+    const find = await Paciente.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(await function (pacientes) {
+            /*        console.log(pacientes) */
+            return res.status(200).send({ data: pacientes })
+        })
+})
+
+
 
 router.post("/pacientesList/edit", async (req, res) => {
     console.log(req.body)
@@ -27,7 +46,7 @@ router.post("/pacientesList/edit", async (req, res) => {
             apellido: req.body.apellido,
             direccion: req.body.direccion,
             nombreFamiliar: req.body.nombreFamiliar,
-            apellidoFamiliar: req.body.apellidoFamiliar, 
+            apellidoFamiliar: req.body.apellidoFamiliar,
             telefono: req.body.telefono,
             email: req.body.email,
             patologia: req.body.patologia,
@@ -65,7 +84,7 @@ router.post("/pacientesList/create", (req, res) => {
             apellido: req.body.apellido,
             direccion: req.body.direccion,
             nombreFamiliar: req.body.nombreFamiliar,
-            apellidoFamiliar: req.body.apellidoFamiliar, 
+            apellidoFamiliar: req.body.apellidoFamiliar,
             telefono: req.body.telefono,
             email: req.body.email,
             patologia: req.body.patologia,
@@ -77,12 +96,69 @@ router.post("/pacientesList/create", (req, res) => {
             precio: req.body.precio,
             status: req.body.status,
         })
-        res.status(200)
+    res.status(200)
+})
+
+router.get("/paciente/facturacion/:id", async (req, res) => {
+    console.log('req params: ', req.params.id)
+    await Facturacion.findAll({
+        where: {
+            idPaciente: req.params.id,
+        }
+    }).then(await function (facturas) {
+        /*        console.log(pacientes) */
+        return res.status(200).send({ data: facturas })
+    })
+})
+
+// FACTURACION
+
+router.post("/paciente/facturacion", async (req, res) => {
+    console.log(req.body)
+    await Facturacion.create({
+        idPaciente: req.body.idPaciente,
+        numeroFactura: req.body.numeroFactura,
+        fechaFactura: req.body.fechaFactura,
+        valor: req.body.valor,
+        notasVarias: req.body.notasVarias,
+        status: req.body.status,     
+    });
+   
+})
+
+router.post("/paciente/facturacion", async (req, res) => {
+    console.log(req.body)
+    await Facturacion.create({
+        idPaciente: req.body.idPaciente,
+        numeroFactura: req.body.numeroFactura,
+        fechaFactura: req.body.fechaFactura,
+        valor: req.body.valor,
+        notasVarias: req.body.notasVarias,
+        status: req.body.status,     
+    });
+   
+})
+router.post("/paciente/facturacion/edit", async (req, res) => {
+    console.log(req.body)
+    await Facturacion.create({
+        idPaciente: req.body.idPaciente,
+        numeroFactura: req.body.numeroFactura,
+        fechaFactura: req.body.fechaFactura,
+        valor: req.body.valor,
+        notasVarias: req.body.notasVarias,
+        status: req.body.status,     
+    });
+   
+})
+
+router.post("/paciente/facturacion/destroy", (req, res) => {
+    console.log(req.body)
+
+    Facturacion.destroy({ where: { id: req.body.id }, force: true })
+        .then(() => {
+            res.status(200)
+        })
 })
 
 
-
-
-
 module.exports = router;
-

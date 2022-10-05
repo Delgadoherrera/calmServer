@@ -60,6 +60,18 @@ CREATE TABLE `curriculums`(
     `notasVarias` VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE `facturacion`(
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `numeroFactura` INT NOT NULL,
+    `idPaciente` INT NOT NULL,
+    `fechaFactura` DATE NOT NULL,
+    `valor` INT NOT NULL,
+    `notasVarias` VARCHAR(255) NOT NULL,
+    `imagenFactura` VARCHAR(255) NOT NULL,
+    `status`VARCHAR(255)  NOT NULL
+);
+
+
 INSERT INTO pacientes (nombre, apellido,direccion, nombreFamiliar,apellidoFamiliar,telefono,email,patologia,asistente,valores,fechaInicio, fechaFinal,notasVarias,precio,status) VALUES 
 
 ('nombre deconocido','apellido desconocido','Montevideo 879' ,'Sra. Monica','apellido familiar desconocido',1158022002,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Ortopedia Alemana',72900,1 ),
@@ -67,9 +79,7 @@ INSERT INTO pacientes (nombre, apellido,direccion, nombreFamiliar,apellidoFamili
 ('Teresa De Marco','apellido desconocido','Chascomus 4684' ,'Sr. Natalio','Rubino',1162735162,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Mataderos',103800,1 ),
 ('nombre desconocido','apellido desconocido','Av. Corrientes 4894 9A' ,'Sra Marta','Bocian',1131821315,'email','patologia','asistente','valores','fechaInicio','fechaFinal','notasVariasDesconocidas',60000,1 )
 
-INSERT INTO personal (nombre, apellido,direccion, dni,vacunaciones,telefono,monotributo,notasVarias,valor,status) VALUES 
-('Enfermera','Deprueba','Av. Corrientes 1212 4A' ,34490664,'COVID: 5 agosto 2022' ,1170189952,'LINK a monotributo','notas Varias',55000, 'pagado')
 
+INSERT INTO facturacion (numeroFactura, idPaciente,fechaFactura,valor,notasVarias,imagenFactura,status) VALUES 
 
-
-
+(22030,4,'2014/03/06',542,'Se retraso 4 dias lluvia','Link al pdf','Pagado')
