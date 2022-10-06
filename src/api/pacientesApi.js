@@ -116,40 +116,32 @@ router.get("/paciente/facturacion/:id", async (req, res) => {
 router.post("/paciente/facturacion", async (req, res) => {
     console.log(req.body)
     await Facturacion.create({
-        idPaciente: req.body.idPaciente,
+        idPaciente: req.body.id,
         numeroFactura: req.body.numeroFactura,
         fechaFactura: req.body.fechaFactura,
         valor: req.body.valor,
         notasVarias: req.body.notasVarias,
-        status: req.body.status,     
+        status: req.body.status,
     });
-   
-})
 
-router.post("/paciente/facturacion", async (req, res) => {
-    console.log(req.body)
-    await Facturacion.create({
-        idPaciente: req.body.idPaciente,
-        numeroFactura: req.body.numeroFactura,
-        fechaFactura: req.body.fechaFactura,
-        valor: req.body.valor,
-        notasVarias: req.body.notasVarias,
-        status: req.body.status,     
-    });
-   
 })
 router.post("/paciente/facturacion/edit", async (req, res) => {
     console.log(req.body)
-    await Facturacion.create({
-        idPaciente: req.body.idPaciente,
-        numeroFactura: req.body.numeroFactura,
-        fechaFactura: req.body.fechaFactura,
-        valor: req.body.valor,
-        notasVarias: req.body.notasVarias,
-        status: req.body.status,     
-    });
-   
+    Facturacion
+        .update({
+            idPaciente: req.body.idPaciente,
+            numeroFactura: req.body.numeroFactura,
+            fechaFactura: req.body.fechaFactura,
+            valor: req.body.valor,
+            notasVarias: req.body.notasVarias,
+            status: req.body.status,
+        }, {
+            where: { id: req.body.id }
+        }
+        ).catch(error => res.send(error))
 })
+
+
 
 router.post("/paciente/facturacion/destroy", (req, res) => {
     console.log(req.body)
@@ -160,5 +152,8 @@ router.post("/paciente/facturacion/destroy", (req, res) => {
         })
 })
 
+router.post("/paciente/facturacion/uploadFactura", (req, res) => {
+    console.log(req.body)
+})
 
 module.exports = router;
