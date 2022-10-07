@@ -2,9 +2,24 @@ const express = require('express');
 const router = express.Router();
 const path = require('path')
 const db = require("../database/models")
+const multer = require('multer');
 const Paciente = db.Paciente;
 const Facturacion = db.Facturacion;
 
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, "../../public/img/facturas"));
+    },
+    filename: (req, file, cb) => {
+        console.log('de multer file: ', file);
+        const newFilename = "file" + Date.now() + path.extname(file.originalname);
+        cb(null, newFilename);
+        req.session.newFileName = newFilename
+    }
+
+});
+const upload = multer({ storage })
 
 
 router.get("/pacientesList", async (req, res) => {
@@ -152,8 +167,12 @@ router.post("/paciente/facturacion/destroy", (req, res) => {
         })
 })
 
-router.post("/paciente/facturacion/uploadFactura", (req, res) => {
-    console.log(req.body)
+router.post("/paciente/facturacion/uploadFactura/:id",  (req, res) => {
+    console.log('estan llegando Create de facturas')
+    Facturacion.update({
+        imagenFactura: 'link'
+    }, { where: { id: req.params.id } })
+
 })
 
 module.exports = router;
