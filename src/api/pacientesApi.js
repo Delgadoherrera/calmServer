@@ -167,10 +167,10 @@ router.post("/paciente/facturacion/destroy", (req, res) => {
         })
 })
 
-router.post("/paciente/facturacion/uploadFactura/:id",  (req, res) => {
-    console.log('estan llegando Create de facturas')
+router.post("/paciente/facturacion/uploadFactura/:id", upload.single('file'), (req, res) => {
+    console.log('estan llegando Create de facturas', req.body)
     Facturacion.update({
-        imagenFactura: 'link'
+        imagenFactura: 'http://localhost:4000//img/facturas/' + req.session.newFileName
     }, { where: { id: req.params.id } })
 
 })
