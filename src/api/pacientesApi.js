@@ -5,6 +5,7 @@ const db = require("../database/models")
 const multer = require('multer');
 const Paciente = db.Paciente;
 const Facturacion = db.Facturacion;
+const Evolucion = db.Evolucion;
 
 
 const storage = multer.diskStorage({
@@ -174,5 +175,67 @@ router.post("/paciente/facturacion/uploadFactura/:id", upload.single('file'), (r
     }, { where: { id: req.params.id } })
 
 })
+
+
+
+// EVOLUCION PACIENTES:
+
+router.get("/paciente/evolucion/:id", async (req, res) => {
+    console.log('req params: ', req.params.id)
+    await Evolucion.findAll({
+        where: {
+            pacienteId: req.params.id,
+        }
+    }).then(await function (facturas) {
+        /*        console.log(pacientes) */
+        return res.status(200).send({ data: facturas })
+    })
+})
+
+router.post("/paciente/evolucion/edit", async (req, res) => {
+    console.log('req params: ', req.body)
+    Evolucion
+        .update({
+            id: req.body.id,
+            pacienteId: req.body.pacienteId,
+            obraSocial: req.body.obraSocial,
+            diagnostico: req.body.diagnostico,
+            fecha: req.body.fecha,
+            hora: req.body.hora,
+            evolucionDiaria: req.body.evolucionDiaria,
+            personal: req.body.personal,
+            observaciones: req.body.observaciones,
+
+        }, {
+            where: { id: req.body.id }
+        }
+        ).then(await function (facturas) {
+            /*        console.log(pacientes) */
+            return res.status(200).send({ data: facturas })
+        })
+});
+
+router.post("/paciente/evolucion/create", async (req, res) => {
+    console.log(req.body)
+    Evolucion
+        .create({
+            pacienteId: req.body.id,
+            obraSocial: req.body.obraSocial,
+            diagnostico: req.body.diagnostico,
+            fecha: req.body.fecha,
+            hora: req.body.hora,
+            evolucionDiaria: req.body.evolucionDiaria,
+            personal: req.body.personal,
+            observaciones: req.body.observaciones,
+
+        }).then(await function () {
+            return res.status(200)
+        })
+})
+
+
+
+
+
 
 module.exports = router;

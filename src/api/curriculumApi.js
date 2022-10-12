@@ -77,5 +77,13 @@ router.post("/curriculums/edit", async (req, res) => {
         }
         ).catch(error => res.send(error))
 })
+
+router.post("/curriculums/destroy", (req, res) => {
+    Curriculum.destroy({ where: { id: req.body.id }, force: true })
+        .then(() => {
+            res.status(200)
+        })
+})
+
 module.exports = router;
 

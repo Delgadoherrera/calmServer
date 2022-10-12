@@ -71,6 +71,32 @@ CREATE TABLE `facturacion`(
     `status`VARCHAR(255)  NOT NULL
 );
 
+CREATE TABLE `recibos`(
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `emisor` VARCHAR(255) NOT NULL,
+    `fechaEjecucion` DATE NOT NULL,
+    `beneficiario` VARCHAR(255) NOT NULL,
+    `cuitBeneficiario` INT NOT NULL,
+    `cbuBeneficiario` INT NOT NULL,
+    `referencia` VARCHAR (255) NOT NULL,
+    `importe` INT NOT NULL,
+    `imagenRecibo` VARCHAR(255) NOT NULL,
+    `notasVarias` VARCHAR(255) NOT NULL,
+    `numeroOperacion` INT NOT NULL
+);
+
+CREATE TABLE `evoluciones`(
+    `id` INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `pacienteId` INT NOT NULL,
+    `obraSocial` VARCHAR(255) NOT NULL,
+    `diagnostico` VARCHAR(255) NOT NULL,
+    `fecha` DATE NOT NULL,
+    `hora` VARCHAR(255) NOT NULL,
+    `evolucionDiaria` VARCHAR(255) NOT NULL,
+    `personal` VARCHAR(255) NOT NULL,
+    `observaciones` VARCHAR(255) NOT NULL
+);
+
 
 INSERT INTO pacientes (nombre, apellido,direccion, nombreFamiliar,apellidoFamiliar,telefono,email,patologia,asistente,valores,fechaInicio, fechaFinal,notasVarias,precio,status) VALUES 
 
@@ -79,7 +105,11 @@ INSERT INTO pacientes (nombre, apellido,direccion, nombreFamiliar,apellidoFamili
 ('Teresa De Marco','apellido desconocido','Chascomus 4684' ,'Sr. Natalio','Rubino',1162735162,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Mataderos',103800,1 ),
 ('nombre desconocido','apellido desconocido','Av. Corrientes 4894 9A' ,'Sra Marta','Bocian',1131821315,'email','patologia','asistente','valores','fechaInicio','fechaFinal','notasVariasDesconocidas',60000,1 )
 
+INSERT INTO recibos (emisor,fechaEjecucion,beneficiario,cuitBeneficiario,cbuBeneficiario,referencia,importe,imagenRecibo,numeroOperacion, notasVarias) VALUES 
 
-INSERT INTO facturacion (numeroFactura, idPaciente,fechaFactura,valor,notasVarias,imagenFactura,status) VALUES 
 
-(22030,4,'2014/03/06',542,'Se retraso 4 dias lluvia','Link al pdf','Pagado')
+('Calm', '2020/12/12', 'Luciano', 20344906646, 3445645954, 'pago mensual', 323424, 'imagen', 324234, 'una nota varia')
+
+INSERT INTO evoluciones (pacienteId, obraSocial, diagnostico, fecha,hora,evolucionDiaria,personal,observaciones) VALUES
+
+(1,'OSDE', 'Vejez', 20/20/2020, '12:35pm','Mucho texto aqui', 'Mariquita de valle', 'Se queda dormida rapido')

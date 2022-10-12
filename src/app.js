@@ -5,6 +5,8 @@ const userApi = require('./api/userApi');
 const curriculumApi = require ('./api/curriculumApi')
 const pacientes=require('./api/pacientesApi')
 const personal=require('./api/personalApi')
+const recibosApi=require('./api/recibosApi')
+
 const session = require('express-session');
 const app = express();
 app.use(express.static("public"));
@@ -20,6 +22,7 @@ app.use('/', userApi);
 app.use('/', curriculumApi);
 app.use('/', pacientes);
 app.use('/', personal);
+app.use('/', recibosApi);
 
 app.listen(4000, () => {
     console.log("Servidor corriendo correctamente en http://localhost:4000/")
