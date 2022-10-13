@@ -132,7 +132,7 @@ router.get("/paciente/facturacion/:id", async (req, res) => {
 router.post("/paciente/facturacion", async (req, res) => {
     console.log(req.body)
     await Facturacion.create({
-        idPaciente: req.body.id,
+        idPaciente: req.body.datafromPaciente.id,
         numeroFactura: req.body.numeroFactura,
         fechaFactura: req.body.fechaFactura,
         valor: req.body.valor,
@@ -142,7 +142,7 @@ router.post("/paciente/facturacion", async (req, res) => {
 
 })
 router.post("/paciente/facturacion/edit", async (req, res) => {
-    console.log(req.body)
+    console.log('del que llega', req.body)
     Facturacion
         .update({
             idPaciente: req.body.idPaciente,
@@ -233,6 +233,13 @@ router.post("/paciente/evolucion/create", async (req, res) => {
         })
 })
 
+router.post("/evolucion/destroy", (req, res) => {
+    console.log(req.body)
+    Evolucion.destroy({ where: { id: req.body.id }, force: true })
+        .then(() => {
+            res.status(200)
+        })
+})
 
 
 

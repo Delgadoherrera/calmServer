@@ -92,7 +92,7 @@ CREATE TABLE `evoluciones`(
     `diagnostico` VARCHAR(255) NOT NULL,
     `fecha` DATE NOT NULL,
     `hora` VARCHAR(255) NOT NULL,
-    `evolucionDiaria` VARCHAR(255) NOT NULL,
+    `evolucionDiaria` VARCHAR(MAX) NOT NULL,
     `personal` VARCHAR(255) NOT NULL,
     `observaciones` VARCHAR(255) NOT NULL
 );
@@ -100,10 +100,10 @@ CREATE TABLE `evoluciones`(
 
 INSERT INTO pacientes (nombre, apellido,direccion, nombreFamiliar,apellidoFamiliar,telefono,email,patologia,asistente,valores,fechaInicio, fechaFinal,notasVarias,precio,status) VALUES 
 
-('nombre deconocido','apellido desconocido','Montevideo 879' ,'Sra. Monica','apellido familiar desconocido',1158022002,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Ortopedia Alemana',72900,1 ),
-('Clorinda','apellido desconocido','Fray Calletano Rodriguez 1485 PB' ,'Sra. Iris','apellido familiar desconocido',1168733288,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Villa Adelina',79800,1 ),
-('Teresa De Marco','apellido desconocido','Chascomus 4684' ,'Sr. Natalio','Rubino',1162735162,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Mataderos',103800,1 ),
-('nombre desconocido','apellido desconocido','Av. Corrientes 4894 9A' ,'Sra Marta','Bocian',1131821315,'email','patologia','asistente','valores','fechaInicio','fechaFinal','notasVariasDesconocidas',60000,1 )
+('Leticia','Canzona','Montevideo 879' ,'Sra. Monica','apellido familiar desconocido',1158022002,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Ortopedia Alemana',72900,1 ),
+('Clorinda','De las nieves','Fray Calletano Rodriguez 1485 PB' ,'Sra. Iris','apellido familiar desconocido',1168733288,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Villa Adelina',79800,1 ),
+('Teresa De Marco','Perez','Chascomus 4684' ,'Sr. Natalio','Rubino',1162735162,'email','patologia','asistente','valores','fechaInicio','fechaFinal','Mataderos',103800,1 ),
+('Turguleno','Verguilia','Av. Corrientes 4894 9A' ,'Sra Marta','Bocian',1131821315,'email','patologia','asistente','valores','fechaInicio','fechaFinal','notasVariasDesconocidas',60000,1 )
 
 INSERT INTO recibos (emisor,fechaEjecucion,beneficiario,cuitBeneficiario,cbuBeneficiario,referencia,importe,imagenRecibo,numeroOperacion, notasVarias) VALUES 
 
@@ -112,4 +112,8 @@ INSERT INTO recibos (emisor,fechaEjecucion,beneficiario,cuitBeneficiario,cbuBene
 
 INSERT INTO evoluciones (pacienteId, obraSocial, diagnostico, fecha,hora,evolucionDiaria,personal,observaciones) VALUES
 
-(1,'OSDE', 'Vejez', 20/20/2020, '12:35pm','Mucho texto aqui', 'Mariquita de valle', 'Se queda dormida rapido')
+(1,'OSDE', 'Vejez', 20/20/2020, '12:35pm','Mucho texMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMucho texto aquiMuchoto aqui', 'Mariquita de valle', 'Se queda dormida rapido')
+
+
+INSERT INTO personal (nombre,apellido,direccion,telefono,dni,email,vacunaciones,monotributo,fechaInicio, fechaFinal, notasVarias,valor,status) VALUES 
+('German', 'Perez', 'Republica checa 2323', 44324427, 34490664, 'angel@madrugador.com', 'covid', 'si', 20/12/2020, 25/12/2022, 'trabajador', 6600, 'acitvo')
