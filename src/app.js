@@ -24,7 +24,7 @@ app.use('/', pacientes);
 app.use('/', personal);
 app.use('/', recibosApi);
 
-app.listen(3000, () => {
-    console.log("Servidor corriendo correctamente en http://localhost:4000/")
+app.listen(3001, () => {
+    console.log("Servidor corriendo correctamente en http://localhost:3001/")
 
 });
