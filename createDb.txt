@@ -74,6 +74,7 @@ CREATE TABLE `facturacion`(
 CREATE TABLE `recibos`(
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `emisor` VARCHAR(255) NOT NULL,
+    
     `fechaEjecucion` DATE NOT NULL,
     `beneficiario` VARCHAR(255) NOT NULL,
     `cuitBeneficiario` INT NOT NULL,
