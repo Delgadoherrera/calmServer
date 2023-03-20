@@ -52,11 +52,11 @@ router.get("/detallepaciente/:id", async (req, res) => {
 
 router.post("/pacientesList/edit", async (req, res) => {
   console.log("body",req.body);
-    let objetcts = Object.keys(req.body)
+    let objetcts = [Object.keys(req.body), Object.values(req.body)]
     console.log('objetcts',objetcts)
   Paciente.update(
     {
-
+        
       nombre: req.body.nombre || '',
       apellido: req.body.apellido || "",
       direccion: req.body.direccion || "",
