@@ -75,7 +75,7 @@ router.post("/pacientesList/edit", async (req, res) => {
     }
   )
     .then(() => {
-      return res.redirect("/productos/detail/" + req.params.id);
+      res.status(200);
     })
     .catch((error) => res.send(error));
 });
