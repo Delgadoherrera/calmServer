@@ -74,7 +74,7 @@ router.post("/pacientesList/edit", async (req, res) => {
     where: { id: req.body.id },
   })
     .then(() => {
-      res.status(200);
+      res.status(200);  
     })
     .catch((error) => res.send(error));
 });
@@ -131,8 +131,8 @@ router.get("/paciente/facturacion/:id", async (req, res) => {
 router.post("/paciente/facturacion", async (req, res) => {
   console.log(req.body);
   await Facturacion.create({
-    idPaciente: req.body.datafromPaciente.id,
-    numeroFactura: req.body.numeroFactura,
+    idPaciente: req.body.id,
+    numeroFactura: 00000,
     fechaFactura: req.body.fechaFactura,
     valor: req.body.valor,
     notasVarias: req.body.notasVarias,
