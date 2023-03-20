@@ -51,35 +51,28 @@ router.get("/detallepaciente/:id", async (req, res) => {
 });
 
 router.post("/pacientesList/edit", async (req, res) => {
-  console.log("body",req.body);
-    let objetcts = [Object.keys(req.body), Object.values(req.body)]
-    console.log('objetcts',objetcts)
-    objetcts.map((one)=>{
-        console.log(one)
-    })
-  Paciente.update(
-    {
-        
-      nombre: req.body.nombre || '',
-      apellido: req.body.apellido || "",
-      direccion: req.body.direccion || "",
-      nombreFamiliar: req.body.nombreFamiliar || "",
-      apellidoFamiliar: req.body.apellidoFamiliar || "",
-      telefono: req.body.telefono || 00,
-      email: req.body.email || "",
-      patologia: req.body.patologia|| "",
-      asistente: req.body.asistente ||"",
-      valores: req.body.valores || "",
-      fechaInicio: req.body.fechaInicio| "",
-      fechaFinal: req.body.fechaFinal || "",
-      notasVarias: req.body.notasVarias || "",
-      precio: req.body.precio || "",
-      status: req.body.status ||"",
-    },  
-    {
-      where: { id: req.body.id },
-    }
-  )
+  console.log("body", req.body);
+  const updateData = {};
+  if (req.body.nombre) updateData.nombre = req.body.nombre;
+  if (req.body.apellido) updateData.apellido = req.body.apellido;
+  if (req.body.direccion) updateData.direccion = req.body.direccion;
+  if (req.body.nombreFamiliar)
+    updateData.nombreFamiliar = req.body.nombreFamiliar;
+  if (req.body.apellidoFamiliar)
+    updateData.apellidoFamiliar = req.body.apellidoFamiliar;
+  if (req.body.telefono) updateData.telefono = req.body.telefono;
+  if (req.body.email) updateData.email = req.body.email;
+  if (req.body.patologia) updateData.patologia = req.body.patologia;
+  if (req.body.asistente) updateData.asistente = req.body.asistente;
+  if (req.body.valores) updateData.valores = req.body.valores;
+  if (req.body.fechaInicio) updateData.fechaInicio = req.body.fechaInicio;
+  if (req.body.fechaFinal) updateData.fechaFinal = req.body.fechaFinal;
+  if (req.body.notasVarias) updateData.notasVarias = req.body.notasVarias;
+  if (req.body.precio) updateData.precio = req.body.precio;
+  if (req.body.status) updateData.status = req.body.status;
+  Paciente.update(updateData, {
+    where: { id: req.body.id },
+  })
     .then(() => {
       res.status(200);
     })
