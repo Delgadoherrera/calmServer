@@ -108,6 +108,10 @@ router.post("/pacientesList/create", (req, res) => {
   });
   res.status(200);
 });
+router.post("/andy", (req, res) => {
+  console.log(req.body);
+  res.status(200);
+});
 
 router.get("/paciente/facturacion/:id", async (req, res) => {
   console.log("req params: ", req.params.id);
