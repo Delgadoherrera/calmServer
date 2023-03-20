@@ -135,7 +135,7 @@ router.post("/paciente/facturacion", async (req, res) => {
     numeroFactura: 00000,
     fechaFactura: req.body.fechaFactura,
     valor: req.body.valor,
-    notasVarias: req.body.notasVarias,
+    notasVarias: '',
     status: req.body.status,
   });
 });
