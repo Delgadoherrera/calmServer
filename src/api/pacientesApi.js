@@ -54,6 +54,9 @@ router.post("/pacientesList/edit", async (req, res) => {
   console.log("body",req.body);
     let objetcts = [Object.keys(req.body), Object.values(req.body)]
     console.log('objetcts',objetcts)
+    objetcts.map((one)=>{
+        console.log(one)
+    })
   Paciente.update(
     {
         
