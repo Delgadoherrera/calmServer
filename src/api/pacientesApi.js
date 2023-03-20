@@ -137,7 +137,8 @@ router.post("/paciente/facturacion", async (req, res) => {
     valor: req.body.valor,
     notasVarias: '',
     status: req.body.status,
-  });
+    imagenFactura: 'imagen'
+});
 });
 router.post("/paciente/facturacion/edit", async (req, res) => {
   console.log("del que llega", req.body);
