@@ -54,8 +54,8 @@ router.post("/pacientesList/edit", async (req, res) => {
   console.log(req.body);
   Paciente.update(
     {
-      nombre: req.body.nombre,
-      apellido: req.body.apellido,
+      nombre: req.body.nombre || 'indefinido',
+/*       apellido: req.body.apellido,
       direccion: req.body.direccion,
       nombreFamiliar: req.body.nombreFamiliar,
       apellidoFamiliar: req.body.apellidoFamiliar,
@@ -68,8 +68,8 @@ router.post("/pacientesList/edit", async (req, res) => {
       fechaFinal: req.body.fechaFinal,
       notasVarias: req.body.notasVarias,
       precio: req.body.precio,
-      status: req.body.status,
-    },
+      status: req.body.status, */
+    },  
     {
       where: { id: req.body.id },
     }
