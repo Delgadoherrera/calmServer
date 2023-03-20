@@ -52,9 +52,8 @@ router.get("/detallepaciente/:id", async (req, res) => {
 
 router.post("/pacientesList/edit", async (req, res) => {
   console.log("body",req.body);
-  req.body.map((one)=>{
-    console.log(one)
-  })
+    let objetcts = Object.keys(req.body)
+    console.log('objetcts',objetcts)
   Paciente.update(
     {
 
