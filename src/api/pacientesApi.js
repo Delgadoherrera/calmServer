@@ -129,7 +129,6 @@ router.get("/paciente/facturacion/:id", async (req, res) => {
 // FACTURACION
 
 router.post("/paciente/facturacion", async (req, res) => {
-  console.log(req.body);
   await Facturacion.create({
     idPaciente: req.body.id,
     numeroFactura: 00000,
@@ -137,7 +136,7 @@ router.post("/paciente/facturacion", async (req, res) => {
     valor: req.body.valor,
     notasVarias: '',
     status: req.body.status,
-    imagenFactura: 'imagen'
+    imagenFactura: req.body.imagenFactura
 });
 });
 router.post("/paciente/facturacion/edit", async (req, res) => {
