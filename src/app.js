@@ -10,14 +10,16 @@ const bodyParser = require('body-parser');
 
 const session = require('express-session');
 const app = express();
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(cors({ origin: '*' }))
+
 app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 app.use(session({ secret: 'Calm Salute' }));
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
-app.use(cors({ origin: '*' }))
+
 
 
 app.use('/', userApi);
