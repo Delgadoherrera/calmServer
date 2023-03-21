@@ -129,6 +129,7 @@ router.get("/paciente/facturacion/:id", async (req, res) => {
 // FACTURACION
 
 router.post("/paciente/facturacion", async (req, res) => {
+    console.log(req.body)
   await Facturacion.create({
     idPaciente: req.body.id,
     numeroFactura: 00000,
