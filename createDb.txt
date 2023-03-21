@@ -67,7 +67,7 @@ CREATE TABLE `facturacion`(
     `fechaFactura` DATE NOT NULL,
     `valor` INT NOT NULL,
     `notasVarias` VARCHAR(255) NOT NULL,
-    `imagenFactura` VARCHAR(255) NOT NULL,
+    `imagenFactura` MEDIUMTEXT NOT NULL,
     `status`VARCHAR(255)  NOT NULL
 );
 
